@@ -1,4 +1,4 @@
-ame: Docker Image CI - Payments
+name: Docker Image CI - Payments
 
 on:
   push:
