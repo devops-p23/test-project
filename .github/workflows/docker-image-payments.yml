@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: r41ss4/test_payment-service_m2
+    runs-on: alpine:3.18
 
     steps:
     - uses: actions/checkout@v3
