@@ -2,7 +2,7 @@
 # Docker para compilar la aplicación java de payment-service-example 
 
 FROM maven:3.6-jdk-8-alpine AS builder
-COPY . /app
+COPY /payments-service-example /app
 WORKDIR /app
 RUN mvn -e -B package
 
