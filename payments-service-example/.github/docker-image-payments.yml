@@ -1,0 +1,18 @@
+ame: Docker Image CI - Payments
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: r41ss4/test_payment-service_m2
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image Payments
+      run: docker build . --file payments-service-example/Dockerfile --tag payment-service-t:$(date +%s)
