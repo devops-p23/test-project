@@ -31,24 +31,24 @@ jobs:
 # Build Docker Images for each BE and upload them to Docker Hub
     - name: Build the Docker image Payments
       run: | 
-        docker build . -f payments-service-example/Dockerfile -t r41ss4/payments-service-t:$(date +%Y-%m-%d_H%)
-        docker image push r41ss4/payments-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/payments-service-t:(date +%Y-%m-%d_H%)
+        docker build . -f payments-service-example/Dockerfile -t r41ss4/payments-service-t:$(date +%Y-%m-%d-H%)
+        docker image push r41ss4/payments-service-t:$(date +%Y-%m-%d-H%)
+        docker run -d r41ss4/payments-service-t:(date +%Y-%m-%d-H%)
 
     - name: Build the Docker image Shipping
       run: |
-        docker build . -f shipping-service-example/Dockerfile -t r41ss4/shipping-service-t:$(date +%Y-%m-%d_H%)
-        docker image push r41ss4/shipping-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/shipping-service-t:(date +%Y-%m-%d_H%)
+        docker build . -f shipping-service-example/Dockerfile -t r41ss4/shipping-service-t:$(date +%Y-%m-%d-H%)
+        docker image push r41ss4/shipping-service-t:$(date +%Y-%m-%d-H%)
+        docker run -d r41ss4/shipping-service-t:(date +%Y-%m-%d-H%)
 
     - name: Build the Docker image Products
       run: |
-        docker build . -f products-service-example/Dockerfile -t r41ss4/products-service-t:$(date +%Y-%m-%d_H%)
-        docker image push r41ss4/products-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/products-service-t:(date +%Y-%m-%d_H%)
+        docker build . -f products-service-example/Dockerfile -t r41ss4/products-service-t:$(date +%Y-%m-%d-H%)
+        docker image push r41ss4/products-service-t:$(date +%Y-%m-%d-H%)
+        docker run -d r41ss4/products-service-t:(date +%Y-%m-%d-H%)
 
     - name: Build the Docker image Orders
       run: |
-        docker build . -f orders-service-example/Dockerfile -t r41ss4/orders-service-t:$(date +%Y-%m-%d_H%)
-        docker image push r41ss4/orders-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/orders-service-t:(date +%Y-%m-%d_H%)
+        docker build . -f orders-service-example/Dockerfile -t r41ss4/orders-service-t:$(date +%Y-%m-%d-H%)
+        docker image push r41ss4/orders-service-t:$(date +%Y-%m-%d-H%)
+        docker run -d r41ss4/orders-service-t:(date +%Y-%m-%d-H%)
