@@ -33,22 +33,22 @@ jobs:
       run: | 
         docker build . --file payments-service-example/Dockerfile --tag r41ss4/payments-service-t:$(date +%Y-%m-%d_H%)
         docker image push r41ss4/payments-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/payments-service-t:latest
+        docker run -d r41ss4/payments-service-t:(date +%Y-%m-%d_H%)
 
     - name: Build the Docker image Shipping
       run: |
         docker build . --file shipping-service-example/Dockerfile --tag r41ss4/shipping-service-t:$(date +%Y-%m-%d_H%)
         docker image push r41ss4/shipping-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/shipping-service-t:latest
+        docker run -d r41ss4/shipping-service-t:(date +%Y-%m-%d_H%)
 
     - name: Build the Docker image Products
       run: |
         docker build . --file products-service-example/Dockerfile --tag r41ss4/products-service-t:$(date +%Y-%m-%d_H%)
         docker image push r41ss4/products-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/products-service-t:latest
+        docker run -d r41ss4/products-service-t:(date +%Y-%m-%d_H%)
 
     - name: Build the Docker image Orders
       run: |
         docker build . --file orders-service-example/Dockerfile --tag r41ss4/orders-service-t:$(date +%Y-%m-%d_H%)
         docker image push r41ss4/orders-service-t:$(date +%Y-%m-%d_H%)
-        docker run -d r41ss4/orders-service-t:latest
+        docker run -d r41ss4/orders-service-t:(date +%Y-%m-%d_H%)
