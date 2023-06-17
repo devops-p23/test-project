@@ -1,5 +1,6 @@
 name: Docker Images CI - Main
 
+# This workflow created docker images, upload them in the DockerHub and run the containers for the BE
 on:
   push:
     branches: [ "main" ]
@@ -13,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+# Login with Docker Hub, so that docker images are store and available there instead of locally
     - name: Checkout
       uses: actions/checkout@v3
       
@@ -25,25 +28,31 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
+# Build Docker Images for each BE and upload them to Docker Hub
     - uses: actions/checkout@v3
     - name: Build the Docker image Payments
-      run: docker build . --file payments-service-example/Dockerfile --tag r41ss4/payment-service-t:$(date +%s)
+      run: | 
+        docker build . --file payments-service-example/Dockerfile --tag r41ss4/payments-service-t:$(date +%s)
+        docker push r41ss4/payments-service-t:$(date +%s)
+        docker run - d r41ss4/payments-service-t:$(date +%s)
 
     - uses: actions/checkout@v3
     - name: Build the Docker image Shipping
-      run: docker build . --file shipping-service-example/Dockerfile --tag r41ss4/shipping-service-t:$(date +%s)
+      run: |
+        docker build . --file shipping-service-example/Dockerfile --tag r41ss4/shipping-service-t:$(date +%s)
+        docker push r41ss4/shipping-service-t:$(date +%s)
+        docker run - d r41ss4/shipping-service-t:$(date +%s)
 
     - uses: actions/checkout@v3
     - name: Build the Docker image Products
-      run: docker build . --file products-service-example/Dockerfile --tag r41ss4/products-service-t:$(date +%s)
+      run: |
+        docker build . --file products-service-example/Dockerfile --tag r41ss4/products-service-t:$(date +%s)
+        docker push r41ss4/products-service-t:$(date +%s)
+        docker run - d r41ss4/products-service-t:$(date +%s)
 
     - uses: actions/checkout@v3
     - name: Build the Docker image Orders
-      run: docker build . --file orders-service-example/Dockerfile --tag r41ss4/orders-service-t:$(date +%s)
-
-    - name: Run the containers
       run: |
-        docker run r41ss4/payment-service-t:$(date +%s)
-        docker run r41ss4/shipping-service-t:$(date +%s)
-        docker run r41ss4/products-service-t:$(date +%s)
-        docker run r41ss4/orders-service-t:$(date +%s)
+        docker build . --file orders-service-example/Dockerfile --tag r41ss4/orders-service-t:$(date +%s)
+        docker push r41ss4/orders-service-t:$(date +%s)
+        docker run - d r41ss4/orders-service-t:$(date +%s)
